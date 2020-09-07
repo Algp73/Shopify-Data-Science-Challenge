@@ -1,0 +1,36 @@
+#############
+How many orders were shipped by Speedy Express in total?
+
+SELECT Orders.ShipperID, COUNT(DISTINCT OrderID) AS OrdersPerShipper FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+WHERE ShipperName = 'Speedy Express'
+GROUP BY Orders.ShipperID
+;
+
+The Speedy Express shipped 54 orders.
+
+#############
+What is the last name of the employee with the most orders?
+
+SELECT EmployeeID, COUNT(DISTINCT OrderID) AS OrderAmount FROM Orders
+GROUP BY EmployeeID
+ORDER BY OrderAmount DESC
+;
+
+EmployeeID = 4 was the employee with the most orders.
+
+
+#############
+What product was ordered the most by customers in Germany?
+
+
+SELECT ProductID, Quantity, SUM(Quantity) AS ProductQuantity
+FROM OrderDetails
+LEFT JOIN Orders ON Orders.OrderID = OrderDetails.OrderID
+LEFT JOIN Customers ON Customers.CustomerID = Orders.CustomerID
+WHERE Country = 'Germany'
+GROUP BY ProductID
+ORDER BY ProductQuantity DESC
+;
+
+The product corresponding to ProductID = 40 was the most ordered by customers in Germany.

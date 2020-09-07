@@ -1,0 +1,14 @@
+Inspection of the data reveals that there are 3 types of orders: "normal" personal orders. "Industrial" or "commercial" orders that include a lot of sneakers, probably for reselling. Lastly there are the orders from shop 78, which sells expensive sneakers.
+
+Separation of orders:
+	Orders can be classified depending on the order amount since all of the orders that aren't 'normal' orders have an order amount above a threshold of 25725, and all of the orders that are 'industrial' have an order value equal to 704000, more than all of the expensive and normal orders. This gives the opportunity to calculate de AOV for each type of order if this is a metric we like, and we will do so.
+
+Getting the average sneaker value (ASV):
+	Another metric would be the average sneaker value, which coupled with the number of sneakers per order would be a more detailed option than simply the AOV for each order category.
+
+	A way of calculating the ASV would be to sum all the order totals and divide it by the total amount of items bought. But because of the existence of category 3 orders, the expensive sneakers category, this would suffer from the same problems as calculating the AOV as the naive initial calculation. Again a solution for this is calculating the ASV for categories 1 and 2 separately from category 3. This can be done because there are orders from shop 42 (the shop that has all the industrial orders) and we can tell that the higher order amount is completely due to a higher total items amount, but their unit price is in the same range as the normal orders.
+
+
+In summary, the metrics reported should be:
+	-ASV for each of the 2 price categories (order categories 1&2, then order category 3) and the average item amount per order for each of the 3 order categories. For ease of calculation we'll first get this for all categories separately and then for 1&2 which is the most important ASV.
+	-AOV for each of the 3 order categories, which, instead of calculating directly, can be calculated using the ASV and average item amount per order 
